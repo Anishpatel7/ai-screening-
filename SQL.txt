@@ -1,0 +1,104 @@
+-- Create the database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS resumes_database;
+
+-- Switch to the database
+USE resumes_database;
+
+-- Table: employees
+CREATE TABLE IF NOT EXISTS employees (
+    Name VARCHAR(50),
+    Email VARCHAR(50),
+    Resume MEDIUMBLOB,
+    score FLOAT,
+    location VARCHAR(30),
+    category VARCHAR(255)
+);
+
+-- Table: hr
+CREATE TABLE IF NOT EXISTS hr (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    resume_name VARCHAR(255),
+    resume_data MEDIUMBLOB,
+    upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    position VARCHAR(255)
+);
+
+-- Table: skills
+CREATE TABLE IF NOT EXISTS skills (
+    position VARCHAR(255) PRIMARY KEY,
+    skills TEXT
+);
+
+-- Table: resume_details (NEW TABLE ADDED)
+CREATE TABLE IF NOT EXISTS resume_details (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    phone VARCHAR(50),
+    skills TEXT,
+    predicted_position VARCHAR(255),
+    experience INT,
+    file_name VARCHAR(255),
+    upload_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insert skills data
+INSERT IGNORE INTO skills (position, skills) VALUES
+    ('java developer', 'java, j2ee, spring, hibernate, sql, javascript, web services'),
+    ('python developer', 'python, django, flask, rest api, sql, git'),
+    ('data scientist', 'python, machine learning, deep learning, statistics, sql, data analysis'),
+    ('web developer', 'html, css, javascript, react, angular, node.js'),
+    ('data analyst', 'sql, excel, statistics, data visualization, power bi'),
+    ('frontend developer', 'html, css, javascript, react, vue.js, typescript'),
+    ('backend developer', 'node.js, express, sql, mongodb, api development'),
+    ('full stack developer', 'javascript, react, node.js, mongodb, sql, html, css'),
+    ('mobile app developer', 'flutter, dart, android, ios, react native'),
+    ('android developer', 'java, kotlin, android sdk, firebase, android studio'),
+    ('ios developer', 'swift, objective-c, xcode, ios sdk, core data'),
+    ('machine learning engineer', 'python, scikit-learn, tensorflow, keras, pandas, numpy'),
+    ('deep learning engineer', 'python, pytorch, tensorflow, keras, cnn, rnn'),
+    ('cloud engineer', 'aws, azure, gcp, docker, kubernetes, terraform'),
+    ('devops engineer', 'jenkins, docker, kubernetes, ansible, ci/cd, aws'),
+    ('network engineer', 'networking, cisco, routing, switching, firewall, vpn'),
+    ('system administrator', 'linux, windows server, bash, powershell, active directory'),
+    ('security analyst', 'siem, nmap, wireshark, firewalls, intrusion detection'),
+    ('cybersecurity specialist', 'penetration testing, vulnerability assessment, kali linux'),
+    ('software engineer', 'java, python, c++, git, algorithms, data structures'),
+    ('qa engineer', 'selenium, junit, testng, manual testing, automation'),
+    ('test automation engineer', 'selenium, java, testng, jenkins, cucumber'),
+    ('business analyst', 'requirements gathering, jira, sql, data analysis, uml'),
+    ('product manager', 'agile, scrum, jira, product roadmap, stakeholder management'),
+    ('project manager', 'project planning, jira, gantt charts, scrum, risk management'),
+    ('ui/ux designer', 'figma, sketch, adobe xd, wireframing, prototyping'),
+    ('graphic designer', 'photoshop, illustrator, indesign, adobe creative suite'),
+    ('database administrator', 'oracle, sql server, mysql, postgresql, backup, replication'),
+    ('big data engineer', 'hadoop, spark, hive, kafka, scala'),
+    ('data engineer', 'python, sql, airflow, etl, bigquery, spark'),
+    ('ai engineer', 'tensorflow, pytorch, python, deep learning, computer vision'),
+    ('blockchain developer', 'solidity, ethereum, smart contracts, web3.js, truffle'),
+    ('game developer', 'unity, c#, unreal engine, 3d modeling, game physics'),
+    ('embedded systems engineer', 'c, c++, embedded c, microcontrollers, rtos'),
+    ('robotics engineer', 'ros, python, c++, sensors, machine vision'),
+    ('site reliability engineer', 'sre, monitoring, grafana, prometheus, kubernetes'),
+    ('technical writer', 'technical documentation, markdown, api docs, xml, git'),
+    ('seo specialist', 'seo, google analytics, keyword research, on-page seo'),
+    ('digital marketing specialist', 'seo, sem, google ads, social media, analytics'),
+    ('content writer', 'copywriting, seo, content strategy, wordpress'),
+    ('crm developer', 'salesforce, crm, apex, visualforce, lightning'),
+    ('sap consultant', 'sap, abap, fico, mm, sd, hana'),
+    ('power bi developer', 'power bi, dax, m language, data modeling, sql'),
+    ('tableau developer', 'tableau, dashboards, data visualization, sql'),
+    ('rpa developer', 'uipath, blue prism, automation anywhere, process automation'),
+    ('computer vision engineer', 'opencv, deep learning, image processing, python'),
+    ('natural language processing engineer', 'nlp, nlp pipelines, spacy, transformers'),
+    ('hardware engineer', 'circuit design, pcb, cad, microcontrollers'),
+    ('technical support engineer', 'troubleshooting, help desk, customer support, networking'),
+    ('accountant', 'accounting, quickbooks, tax preparation, excel, financial reporting'),
+    ('registered nurse', 'patient care, medication administration, emr, vital signs, critical thinking'),
+    ('sales associate', 'customer service, product knowledge, upselling, communication, point of sale'),
+    ('teacher', 'lesson planning, classroom management, curriculum development, grading, communication'),
+    ('graphic designer', 'photoshop, illustrator, indesign, branding, typography'),
+    ('marketing manager', 'campaign management, digital marketing, seo, analytics, branding'),
+    ('financial analyst', 'excel, financial modeling, forecasting, budgeting, data analysis'),
+    ('operations manager', 'supply chain, logistics, kpi tracking, team leadership, process improvement'),
+    ('human resources manager', 'recruitment, onboarding, employee relations, benefits, compliance');
